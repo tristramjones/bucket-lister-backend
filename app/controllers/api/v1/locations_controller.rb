@@ -1,13 +1,24 @@
 class Api::V1::LocationsController < ApplicationController
 
   def index
-    @locations = Location.all.map{|location| { id: location.id, name: location.name, users: location.users }}
+    @locations = Location.all.map{|location| {
+      id: location.id,
+      name: location.name,
+      location: location.location,
+      users: location.users
+      }
+    }
     render json: @locations
   end
 
   def show
     @location = Location.find(params[:id])
-    render json: { id: @location.id, name: @location.name, users: @location.users }
+    render json: {
+      id: @location.id,
+      name: @location.name,
+      location: @location.location,
+      users: @location.users
+    }
   end
 
   def new
@@ -30,7 +41,7 @@ class Api::V1::LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name)
+    params.require(:location).permit(:name,:location)
   end
 
 end
