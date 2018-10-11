@@ -1,7 +1,7 @@
 class Api::V1::LocationsController < ApplicationController
 
   def index
-    @locations = Location.all.map{|location| { id: location.id, name: location.name, locations: location.users }}
+    @locations = Location.all.map{|location| { id: location.id, name: location.name, users: location.users }}
     render json: @locations
   end
 
