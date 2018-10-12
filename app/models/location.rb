@@ -5,5 +5,5 @@ class Location < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, presence: true
   validates :location_json, presence: true
-  validates :location_json, uniqueness: true
+  # validates :location_json, uniqueness: true
 end
