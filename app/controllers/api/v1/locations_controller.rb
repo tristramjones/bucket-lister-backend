@@ -4,7 +4,7 @@ class Api::V1::LocationsController < ApplicationController
     @locations = Location.all.map{|location| {
       id: location.id,
       name: location.name,
-      location: location.location,
+      location_json: location.location_json,
       users: location.users
       }
     }
@@ -16,7 +16,7 @@ class Api::V1::LocationsController < ApplicationController
     render json: {
       id: @location.id,
       name: @location.name,
-      location: @location.location,
+      location_json: @location.location_json,
       users: @location.users
     }
   end
@@ -26,6 +26,7 @@ class Api::V1::LocationsController < ApplicationController
   end
 
   def create
+    puts "create",location_params
     @location = Location.create(location_params)
   end
 
@@ -41,7 +42,8 @@ class Api::V1::LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name,:location)
+    puts "params ",params
+    params.permit(:name, :location_json)
   end
 
 end
