@@ -5,7 +5,8 @@ class Api::V1::AttractionsController < ApplicationController
       id: attraction.id,
       title: attraction.title,
       description: attraction.description,
-      trip_id: attraction.trip_id
+      trip_id: attraction.trip_id,
+      position: attraction.position
       }
     }
     render json: @attractions
@@ -17,7 +18,8 @@ class Api::V1::AttractionsController < ApplicationController
       id: @attraction.id,
       title: @attraction.title,
       description: @attraction.description,
-      trip_id: @attraction.trip_id
+      trip_id: @attraction.trip_id,
+      position: @attraction.position
     }
   end
 
@@ -41,7 +43,7 @@ class Api::V1::AttractionsController < ApplicationController
   private
 
   def attraction_params
-    params.require(:attraction).permit(:title, :description, :trip_id)
+    params.require(:attraction).permit(:title, :description, :trip_id, :position)
   end
 
 end
