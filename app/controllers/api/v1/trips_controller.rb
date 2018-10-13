@@ -3,10 +3,10 @@ class Api::V1::TripsController < ApplicationController
   def index
     @trips = Trip.all.map{|trip| {
       id: trip.id,
-      title: trip.title,
-      description: trip.description,
       attractions: trip.attractions,
+      user_name: (User.find(trip.user_id)).name,
       user_id: trip.user_id,
+      location_name: (Location.find(trip.location_id)).name,
       location_id: trip.location_id
       }
     }
@@ -17,10 +17,10 @@ class Api::V1::TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     render json: {
       id: @trip.id,
-      title: @trip.title,
-      description: @trip.description,
-      attractions: trip.attractions,
+      attractions: @trip.attractions,
+      user_name: (User.find(trip.user_id)).name,
       user_id: @trip.user_id,
+      location_name: (Location.find(trip.location_id)).name,
       location_id: @trip.location_id
     }
   end
@@ -45,7 +45,7 @@ class Api::V1::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :user_id, :location_id)
+    params.require(:trip).permit(:user_id, :location_id)
   end
 
 end
