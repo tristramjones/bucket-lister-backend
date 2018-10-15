@@ -3,11 +3,11 @@ class Api::V1::TripsController < ApplicationController
   def index
     @trips = Trip.all.map{|trip| {
       id: trip.id,
-      attractions: trip.attractions,
       user_name: (User.find(trip.user_id)).name,
       user_id: trip.user_id,
       location_name: (Location.find(trip.location_id)).name,
-      location_id: trip.location_id
+      location_id: trip.location_id,
+      attractions: trip.attractions
       }
     }
     render json: @trips
