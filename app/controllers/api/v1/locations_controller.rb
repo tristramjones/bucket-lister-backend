@@ -26,7 +26,6 @@ class Api::V1::LocationsController < ApplicationController
   end
 
   def create
-    puts "create",location_params
     @location = Location.create(location_params)
   end
 
@@ -42,7 +41,6 @@ class Api::V1::LocationsController < ApplicationController
   private
 
   def location_params
-    puts "params ",params
     params.permit(:name, :location_json)
   end
 

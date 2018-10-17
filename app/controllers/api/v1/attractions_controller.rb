@@ -31,14 +31,18 @@ class Api::V1::AttractionsController < ApplicationController
     @attraction = Attraction.create(attraction_params)
   end
 
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # def destroy
-  # end
+  def update
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params)
+    if @attraction.save
+      render json: @attraction, status: :accepted
+    else
+      render json: { errors: @attraction.errors.full_messages }, status: :unprocessible_entity
+    end
+  end
+
+  def destroy
+  end
 
   private
 
