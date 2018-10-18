@@ -42,6 +42,8 @@ class Api::V1::AttractionsController < ApplicationController
   end
 
   def destroy
+    @attraction = Attraction.find(params[:id])
+    @attraction.destroy
   end
 
   private
