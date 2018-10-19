@@ -25,22 +25,9 @@ class Api::V1::TripsController < ApplicationController
     }
   end
 
-  def new
-    @trip = Trip.new
-  end
-
   def create
     @trip = Trip.create(trip_params)
   end
-
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # def destroy
-  # end
 
   private
 

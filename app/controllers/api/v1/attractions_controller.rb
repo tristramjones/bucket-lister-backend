@@ -4,6 +4,7 @@ class Api::V1::AttractionsController < ApplicationController
     @attractions = Attraction.all.map{|attraction| {
       id: attraction.id,
       title: attraction.title,
+      category: attraction.category,
       description: attraction.description,
       trip_id: attraction.trip_id,
       position: attraction.position
@@ -17,14 +18,11 @@ class Api::V1::AttractionsController < ApplicationController
     render json: {
       id: @attraction.id,
       title: @attraction.title,
+      category: @attraction.category,
       description: @attraction.description,
       trip_id: @attraction.trip_id,
       position: @attraction.position
     }
-  end
-
-  def new
-    @attraction = Attraction.new
   end
 
   def create
@@ -50,7 +48,7 @@ class Api::V1::AttractionsController < ApplicationController
   private
 
   def attraction_params
-    params.require(:attraction).permit(:title, :description, :trip_id, :position)
+    params.require(:attraction).permit(:title, :description, :trip_id, :category, :position)
   end
 
 end
