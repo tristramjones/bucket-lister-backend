@@ -23,22 +23,9 @@ class Api::V1::UsersController < ApplicationController
     }
   end
 
-  def new
-    @user = User.new
-  end
-
   def create
     @user = User.create(user_params)
   end
-
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # def destroy
-  # end
 
   private
 
