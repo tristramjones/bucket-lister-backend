@@ -29,6 +29,7 @@ class Api::V1::AttractionsController < ApplicationController
 
   def create
     @attraction = Attraction.create(attraction_params)
+    render json: @attraction
   end
 
   def update
