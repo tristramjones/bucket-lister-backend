@@ -22,7 +22,14 @@ class Api::V1::LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.create(location_params)
+    Location.all.find do |location|
+      if location["location_json"] === location_params["location_json"]
+        @location = location
+      else
+        @location = Location.create(location_params)
+      end
+    end
+    render json: @location
   end
 
   private

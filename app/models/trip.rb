@@ -3,5 +3,6 @@ class Trip < ApplicationRecord
   belongs_to :location
   has_many :attractions
 
+  validates :user_id, :location_id, presence: true
   validates :location_id, uniqueness: true
 end
