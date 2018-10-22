@@ -26,13 +26,17 @@ class Api::V1::TripsController < ApplicationController
   end
 
   def create
-    Trip.all.find do |trip|
-      if (trip["user_id"] === trip_params["user_id"] && trip["location_id"] === trip_params["location_id"])
+    @trip = ''
+    Trip.all.each do |trip|
+      if trip["user_id"] == trip_params["user_id"] && trip["location_id"] == trip_params["location_id"]
         @trip = trip
-      else
-        @trip = Trip.create(trip_params)
       end
     end
+
+    if @trip == ''
+      @trip = Trip.create(trip_params)
+    end
+    
     render json: {
       id: @trip.id,
       user_id: @trip.user_id,
