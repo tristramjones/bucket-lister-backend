@@ -1,4 +1,5 @@
 class Api::V1::AttractionsController < ApplicationController
+  skip_before_action :authorized
 
   def index
     @attractions = Attraction.all.map{|attraction| {

@@ -1,9 +1,10 @@
 class Api::V1::TripsController < ApplicationController
+  skip_before_action :authorized
 
   def index
     @trips = Trip.all.map{|trip| {
       id: trip.id,
-      user_name: (User.find(trip.user_id)).name,
+      username: (User.find(trip.user_id)).username,
       user_id: trip.user_id,
       location_name: (Location.find(trip.location_id)).name,
       location_id: trip.location_id,
@@ -36,11 +37,11 @@ class Api::V1::TripsController < ApplicationController
     if @trip == ''
       @trip = Trip.create(trip_params)
     end
-    
+
     render json: {
       id: @trip.id,
       user_id: @trip.user_id,
-      user_name: (User.find(@trip.user_id)).name,
+      username: (User.find(@trip.user_id)).username,
       location_id: @trip.location_id,
       location_name: (Location.find(@trip.location_id)).name,
     }
