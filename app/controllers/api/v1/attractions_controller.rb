@@ -8,6 +8,7 @@ class Api::V1::AttractionsController < ApplicationController
       category: attraction.category,
       description: attraction.description,
       trip_id: attraction.trip_id,
+      user_id: Trip.find(attraction.trip_id).user_id,
       position: attraction.position
       }
     }
@@ -27,6 +28,7 @@ class Api::V1::AttractionsController < ApplicationController
   end
 
   def create
+    # byebug
     @attraction = Attraction.create(attraction_params)
     render json: @attraction
   end
