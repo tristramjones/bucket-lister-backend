@@ -28,7 +28,6 @@ class Api::V1::AttractionsController < ApplicationController
   end
 
   def create
-    # byebug
     @attraction = Attraction.create(attraction_params)
     render json: @attraction
   end
