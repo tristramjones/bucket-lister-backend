@@ -1,4 +1,5 @@
 class Api::V1::LocationsController < ApplicationController
+  skip_before_action :authorized
 
   def index
     @locations = Location.all.map{|location| {
@@ -32,7 +33,6 @@ class Api::V1::LocationsController < ApplicationController
     if @location == ''
       @location = Location.create(location_params)
     end
-    
     render json: @location
   end
 

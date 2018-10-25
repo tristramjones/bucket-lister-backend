@@ -1,4 +1,5 @@
 class Api::V1::AttractionsController < ApplicationController
+  skip_before_action :authorized
 
   def index
     @attractions = Attraction.all.map{|attraction| {
@@ -7,6 +8,7 @@ class Api::V1::AttractionsController < ApplicationController
       category: attraction.category,
       description: attraction.description,
       trip_id: attraction.trip_id,
+      user_id: Trip.find(attraction.trip_id).user_id,
       position: attraction.position
       }
     }
