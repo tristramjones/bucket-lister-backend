@@ -38,7 +38,7 @@ For example:
 - The operating system.
 
 ### Pull requests
-Pull Requests are always welcome. Ensure that you've run `npm i` before creating an issue or submitting a pull request.
+Pull Requests are always welcome. Ensure that you've run `bundle exec` before creating an issue or submitting a pull request.
 Ensure the PR description clearly describes the problem and solution. It should include:
 - The operating system on which you tested.
 - The relevant issue number, if applicable.
