@@ -15,7 +15,7 @@ JWT
 - Validations for each creation of model instances
 
 ## Setup
-1. Clone this repo and run `bundle exec`.
+1. Clone down this repo and run `bundle exec`.
 2. Once this has completed and all dependencies are installed, run `rails s`.
 3. Visit [http://localhost:3000/](http://localhost:3000/). You'll only see the Rails welcome screen but this indicates that the http request was successful and the API is ready to serve the client.
 4. Now, visit the [BucketList client](https://github.com/tristramjones/bucket-lister-frontend) and follow the setup instructions to get the BucketList app's frontend running.
