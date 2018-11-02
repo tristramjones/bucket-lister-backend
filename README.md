@@ -8,6 +8,7 @@ I moved to New York City from Utah and wanted this app. Google docs, Yelp, etc. 
 Rails
 OAuth
 JWT
+Postgres
 
 ## Features
 - Custom JSON renderings in controllers
