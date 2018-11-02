@@ -1,4 +1,4 @@
-# BucketList
+# BucketList backend
 This is interactive travel and adventure planner for those with wanderlust. The user engages with the app by creating an account and clicking on the map to create custom markers. The user can then reference the map displaying their custom markers and start planning their next adventure.
 
 ## Motivation
